@@ -17,7 +17,7 @@ blue = (0, 0, 255)
 
 #define game variables
 tile_size = 50
-level = 3
+level = 1
 max_levels = 7
 game_over = False
 game_completed = False
