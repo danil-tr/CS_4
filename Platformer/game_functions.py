@@ -11,12 +11,13 @@ def draw_text(text, font, text_col, x, y):
 
 #load world data
 def load_world(level):
-    data_path = f'level{level}_data'
+    data_path = path.join('levels', f'level{level}_data')
 
     if path.exists(data_path):
         with open(data_path, 'rb') as pickle_in:
             world_data = pickle.load(pickle_in)
-
+    else:
+        print("Oops")
     return world_data
 
 #function to reset level

@@ -12,14 +12,14 @@ mixer.init()
 pygame.init()
 
 #load sounds
-pygame.mixer.music.load('img/music.wav')
+pygame.mixer.music.load('sounds/music.wav')
 pygame.mixer.music.play(-1, 0.0, 5000)
 
-coin_fx = pygame.mixer.Sound('img/coin.wav')
+coin_fx = pygame.mixer.Sound('sounds/coin.wav')
 coin_fx.set_volume(0.5)
-jump_fx = pygame.mixer.Sound('img/jump.wav')
+jump_fx = pygame.mixer.Sound('sounds/jump.wav')
 jump_fx.set_volume(0.5)
-game_over_fx = pygame.mixer.Sound('img/game_over.wav')
+game_over_fx = pygame.mixer.Sound('sounds/game_over.wav')
 game_over_fx.set_volume(0.5)
 sounds = {
 	'coin': coin_fx,
@@ -28,8 +28,8 @@ sounds = {
 }
 
 #define font
-font_score = pygame.font.Font('BAUHS93.ttf', 30)
-font = pygame.font.Font('BAUHS93.ttf', 70)
+font_score = pygame.font.Font('fonts/BAUHS93.ttf', 30)
+font = pygame.font.Font('fonts/BAUHS93.ttf', 70)
 
 restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 50, 'img/restart_btn.png')
 start_button = Button(screen_width // 2 - 350, screen_height // 2, 'img/start_btn.png')
