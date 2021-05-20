@@ -1,9 +1,28 @@
+"""
+The world module: contains game classes
+"""
+
 import pygame
 from pygame.locals import *
-from game_constants import *
+from constants import *
 
 
 class Button:
+    """
+    A class used to represent buttons
+
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+        image_name : str
+            the name of the image that represents the button
+
+    """
+
     def __init__(self, x, y, image_name):
         self.image = pygame.image.load(str(image_name))
         self.clicked = False
@@ -12,11 +31,14 @@ class Button:
         self.rect.y = y
 
     def draw(self):
+        """
+        draws the button image to the screen and tracks the mouse click on each frame
+        """        
         action = False
         #get mouse position
         pos = pygame.mouse.get_pos()
 
-        #chekc mouseover and clicked conditions
+        #check mouseover and clicked conditions
         if self.rect.collidepoint(pos) and pygame.mouse.get_pressed()[0] and not self.clicked:
             self.clicked = True
             action = True
@@ -28,6 +50,29 @@ class Button:
         return action
 
 class Player():
+    """
+    A class used to represent the player
+
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+        world : class World
+            the world in which you want to draw the player
+        blob_group : pygame.sprite.Group()
+
+        lava_group : pygame.sprite.Group()
+
+        exit_group : pygame.sprite.Group()
+
+        coin_group : pygame.sprite.Group()
+
+        platform_group : pygame.sprite.Group()
+
+    """
     def __init__(self, x ,y, world, blob_group, lava_group, exit_group, coin_group, platform_group):
         self.images_right = []
         self.images_left = []
@@ -50,9 +95,31 @@ class Player():
         self.reset(x, y)
 
     def change_world(self, new_world):
+        """
+        Change world for player
+
+        Args: 
+            new_world(two-dimensional array)
+
+        Returns: 
+            None
+        """
         self.world = new_world
     
     def reset(self, x, y):
+        """
+        Reset player's condition
+        Moves the player's sprite to the starting position and resets the effects
+
+        Args: 
+            x : float
+                new x position
+            y : float
+                new y position
+
+        Returns: 
+            None
+        """        
         self.sprite_index = 0
         self.image = self.images_right[self.sprite_index]
         self.rect = self.image.get_rect()
@@ -70,6 +137,22 @@ class Player():
 
 
     def update(self, game_over, score, game_completed, sounds):
+        """
+        Updates the state on each frame of the player: tracks movement and collision with objects
+
+        Args: 
+            game_over : bool
+                flag for determining the progress status of the game
+            score : int
+                Uses the current score counter
+            game_complited : bool
+                flag for determining the victory in the game
+            sounds : dict[str, fx]
+                dictionary with sounds for different situations
+
+        Returns: 
+            new conditions of game_over and score
+        """    
         dx, dy = 0 ,0
 
         if not game_over and not game_completed:
@@ -185,6 +268,17 @@ class Player():
 
 
 class Enemy(pygame.sprite.Sprite):
+    """
+    A class used to represent the blob
+
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+    """
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('img/blob.png').convert_alpha()
@@ -195,6 +289,9 @@ class Enemy(pygame.sprite.Sprite):
         self.move_counter = 0
     
     def update(self):
+        """
+        Allows the enemy to move left and right
+        """   
         self.rect.x += self.move_direction
         self.move_counter += 1
         if abs(self.move_counter) > 50:
@@ -203,6 +300,17 @@ class Enemy(pygame.sprite.Sprite):
 
 
 class Lava(pygame.sprite.Sprite):
+    """
+    A class used to represent the lava
+    the built-in update method is used
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+    """
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/lava.png').convert_alpha()
@@ -212,6 +320,17 @@ class Lava(pygame.sprite.Sprite):
         self.rect.y = y
 
 class Coin(pygame.sprite.Sprite):
+    """
+    A class used to represent coins
+    the built-in update method is used
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+    """
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/coin.png').convert_alpha()
@@ -220,6 +339,21 @@ class Coin(pygame.sprite.Sprite):
         self.rect.center = (x, y)
 
 class Platform(pygame.sprite.Sprite):
+    """
+    A class used to represent moving platforms
+    the built-in update method is used
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+        move_x : float
+            speed on the x-axis
+        move_y : float
+            speed on the y-axis
+    """
     def __init__(self, x, y, move_x, move_y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/platform.png').convert_alpha()
@@ -241,6 +375,17 @@ class Platform(pygame.sprite.Sprite):
             self.move_counter *= -1    
 
 class Exit(pygame.sprite.Sprite):
+    """
+    A class used to represent exit doors
+    the built-in update method is used
+    ...
+
+    Attributes:
+        x : float
+            x coordinate
+        y : float
+            y coordinate
+    """
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/exit.png').convert_alpha()
@@ -251,6 +396,27 @@ class Exit(pygame.sprite.Sprite):
 
 
 class World():
+    """
+    A class used to represent the world
+
+    ...
+
+    Attributes:
+        data : two-dimensional array
+            represent the world
+        world : class World
+            the world in which you want to draw the player
+        blob_group : pygame.sprite.Group()
+
+        lava_group : pygame.sprite.Group()
+
+        exit_group : pygame.sprite.Group()
+
+        coin_group : pygame.sprite.Group()
+
+        platform_group : pygame.sprite.Group()
+
+    """
     def __init__(self, data, blob_group, lava_group, exit_group, coin_group, platform_group):
         self.tile_list = []
         self.data = data
@@ -264,11 +430,16 @@ class World():
         self.level_completed = False
 
     def draw(self):
+        """
+        fill the world with elementary blocks
+        """
         for tile in self.tile_list:
             screen.blit(tile[0], tile[1])
 
     def make_world(self):
-    #load images
+        """
+        parsing a two-dimensional array and filling in sprite groups
+        """
         try:
             dirt_img = pygame.image.load('img/dirt.png').convert_alpha()
             grass_img = pygame.image.load('img/grass.png').convert_alpha()
@@ -309,11 +480,18 @@ class World():
                     level_exit = Exit(tile_count*tile_size, row_count*tile_size - (tile_size // 2))
                     self.exit_group.add(level_exit)
 
-'''
-Input: *(name strings of pictures, (xcoord, ycoord))
-аргументы подаются в порядке их добавления на фоновый экран
-'''
+
 class Background():
+    """
+    A class used to represent the world
+
+    ...
+
+    Attributes:
+        *args :  *(name strings of pictures(str), (xcoord(int), ycoord(int)))
+            arguments are served in the order they are added to the background screen
+
+    """    
     def __init__(self, *args):
         self.background_pics = []
         try:
@@ -323,5 +501,8 @@ class Background():
         except pygame.error as err:
 	        raise SystemExit(err)
     def draw(self):
+        """
+        draws background images
+        """
         for picture, coordinates in self.background_pics:
             screen.blit(picture, coordinates)

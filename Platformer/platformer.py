@@ -1,10 +1,15 @@
+"""
+The platformer module: contains the initialization of the main game objects and the game loop
+
+Run this script to start the game
+"""
 import pygame
 import pickle
 from pygame import mixer
 from pygame.locals import *
-from game_objects import *
-from game_constants import *
-from game_functions import *
+from world import *
+from constants import *
+from functions import *
 from debug import draw_grid
 
 pygame.mixer.pre_init(48000, -16, 1, 1024)
