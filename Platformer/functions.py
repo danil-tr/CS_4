@@ -79,7 +79,7 @@ def reset_level(level, player, blob_group, lava_group, exit_group, coin_group, s
     Returns:
         world (World): instance of the class World with reseted level
     """
-    player.reset(100, screen_height - 130)
+    player.reset(2*tile_size, screen_height - 2.6*tile_size)
 
     platform_group.empty()
     blob_group.empty()

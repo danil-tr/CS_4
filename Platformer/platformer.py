@@ -23,11 +23,11 @@ pygame.mixer.music.load('sounds/music.wav')
 pygame.mixer.music.play(-1, 0.0, 5000)
 
 coin_fx = pygame.mixer.Sound('sounds/coin.wav')
-coin_fx.set_volume(0.5)
+coin_fx.set_volume(sound_volume)
 jump_fx = pygame.mixer.Sound('sounds/jump.wav')
-jump_fx.set_volume(0.5)
+jump_fx.set_volume(sound_volume)
 game_over_fx = pygame.mixer.Sound('sounds/game_over.wav')
-game_over_fx.set_volume(0.5)
+game_over_fx.set_volume(sound_volume)
 sounds = {
     'coin': coin_fx,
     'jump': jump_fx,
@@ -38,9 +38,9 @@ sounds = {
 font_score = pygame.font.Font('fonts/BAUHS93.ttf', 30)
 font = pygame.font.Font('fonts/BAUHS93.ttf', 70)
 
-restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 50, 'img/restart_btn.png')
-start_button = Button(screen_width // 2 - 350, screen_height // 2, 'img/start_btn.png')
-exit_button = Button(screen_width // 2 + 150, screen_height // 2, 'img/exit_btn.png')
+restart_button = Button(screen_width // 2 - tile_size, screen_height // 2 + tile_size, 'img/restart_btn.png')
+start_button = Button(screen_width // 2 - 7*tile_size, screen_height // 2, 'img/start_btn.png')
+exit_button = Button(screen_width // 2 + 3*tile_size, screen_height // 2, 'img/exit_btn.png')
 score_coin = Coin(tile_size // 2, tile_size // 2)
 
 platform_group = pygame.sprite.Group()
@@ -51,7 +51,7 @@ coin_group = pygame.sprite.Group()
 coin_group.add(score_coin)
 
 world = World(load_world(level), blob_group, lava_group, exit_group, coin_group, platform_group)
-player = Player(100, screen_height - (50 + 80), world, blob_group, lava_group, exit_group, coin_group, platform_group)
+player = Player(2*tile_size, screen_height - 2.6*tile_size, world, blob_group, lava_group, exit_group, coin_group, platform_group)
 background = Background(('img/sky.png', (0, 0)), ('img/sun.png', (100, 100)))
 
 # game event loop
@@ -82,7 +82,7 @@ while run:
 
         # if player has died
         if game_over:
-            draw_text('GAME OVER', font, blue, (screen_width // 2) - 180, screen_height // 2 - 50)
+            draw_text('GAME OVER', font, blue, (screen_width // 2) - 3.6*tile_size, screen_height // 2 - tile_size)
             if restart_button.draw():
                 reset_level(level, player, blob_group, lava_group, exit_group, coin_group, score_coin, platform_group)
                 game_over = False
@@ -97,7 +97,7 @@ while run:
                 player.change_world(world)
             else:
                 game_completed = True
-                draw_text('YOU WIN!', font, blue, (screen_width // 2) - 140, screen_height // 2 - 50)
+                draw_text('YOU WIN!', font, blue, (screen_width // 2) - 2.8*tile_size, screen_height // 2 - tile_size)
                 if restart_button.draw():
                     game_completed = False
                     level = 0

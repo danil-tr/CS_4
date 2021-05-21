@@ -16,6 +16,8 @@ Options:
 
     max_levels(int) - number of levels to complete the game
 
+    sound_volume(float) - soun volume from 0 to 1
+
 """
 import pygame
 
@@ -31,6 +33,9 @@ screen_height = 1000
 # make window
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Platformer')
+
+# define sound settings
+sound_volume = 0.5
 
 # define colours
 white = (255, 255, 255)

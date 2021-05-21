@@ -83,7 +83,7 @@ class Player():
         try:
             for num in range(1, 5):
                 img_right = pygame.image.load(f'img/guy{num}.png').convert_alpha()
-                img_right = pygame.transform.scale(img_right, (40, 80))
+                img_right = pygame.transform.scale(img_right, (int(0.8*tile_size), int(1.6*tile_size)))
                 img_left = pygame.transform.flip(img_right, True, False)
                 self.images_right.append(img_right)
                 self.images_left.append(img_left)
@@ -270,7 +270,7 @@ class Player():
                 dy = 0
         elif game_over:
             self.image = self.dead_image
-            if self.rect.y > 200:
+            if self.rect.y > 4*tile_size:
                 self.rect.y -= 5
 
         # draw player onto screen
