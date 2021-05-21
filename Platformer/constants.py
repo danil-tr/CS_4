@@ -1,4 +1,3 @@
-
 """
 The constants module: contains global variables and game settings:
 
@@ -20,23 +19,24 @@ Options:
 """
 import pygame
 
-#fps option
+
+# fps option
 clock = pygame.time.Clock()
 fps = 60
 
-#set size of window
+# set size of window
 screen_width = 1000
-screen_height = 1000 
+screen_height = 1000
 
-#make window
+# make window
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Platformer')
 
-#define colours
+# define colours
 white = (255, 255, 255)
 blue = (0, 0, 255)
 
-#define game variables
+# define game variables
 tile_size = 50
 level = 1
 max_levels = 7

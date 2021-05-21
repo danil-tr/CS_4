@@ -11,8 +11,6 @@ class Button:
     """
     A class used to represent buttons
 
-    ...
-
     Attributes:
         x : float
             x coordinate
@@ -33,27 +31,26 @@ class Button:
     def draw(self):
         """
         draws the button image to the screen and tracks the mouse click on each frame
-        """        
+        """
         action = False
-        #get mouse position
+        # get mouse position
         pos = pygame.mouse.get_pos()
 
-        #check mouseover and clicked conditions
+        # check mouseover and clicked conditions
         if self.rect.collidepoint(pos) and pygame.mouse.get_pressed()[0] and not self.clicked:
             self.clicked = True
             action = True
         if not pygame.mouse.get_pressed()[0]:
             self.clicked = False
-        #draw button
+        # draw button
         screen.blit(self.image, self.rect)
-        
+
         return action
+
 
 class Player():
     """
     A class used to represent the player
-
-    ...
 
     Attributes:
         x : float
@@ -73,7 +70,8 @@ class Player():
         platform_group : pygame.sprite.Group()
 
     """
-    def __init__(self, x ,y, world, blob_group, lava_group, exit_group, coin_group, platform_group):
+
+    def __init__(self, x, y, world, blob_group, lava_group, exit_group, coin_group, platform_group):
         self.images_right = []
         self.images_left = []
         self.world = world
@@ -88,38 +86,10 @@ class Player():
                 img_right = pygame.transform.scale(img_right, (40, 80))
                 img_left = pygame.transform.flip(img_right, True, False)
                 self.images_right.append(img_right)
-                self.images_left.append(img_left) 
+                self.images_left.append(img_left)
             self.dead_image = pygame.image.load('img/ghost.png').convert_alpha()
         except pygame.error as err:
             raise SystemExit(err)
-        self.reset(x, y)
-
-    def change_world(self, new_world):
-        """
-        Change world for player
-
-        Args: 
-            new_world(two-dimensional array)
-
-        Returns: 
-            None
-        """
-        self.world = new_world
-    
-    def reset(self, x, y):
-        """
-        Reset player's condition
-        Moves the player's sprite to the starting position and resets the effects
-
-        Args: 
-            x : float
-                new x position
-            y : float
-                new y position
-
-        Returns: 
-            None
-        """        
         self.sprite_index = 0
         self.image = self.images_right[self.sprite_index]
         self.rect = self.image.get_rect()
@@ -135,6 +105,48 @@ class Player():
         self.walk_cooldown = 5
         self.col_thresh = 20
 
+    def change_world(self, new_world):
+        """
+        Change world for player
+
+        Args: 
+            new_world(two-dimensional array)
+
+        Returns: 
+            None
+        """
+
+        self.world = new_world
+
+    def reset(self, x, y):
+        """
+        Reset player's condition
+        Moves the player's sprite to the starting position and resets the effects
+
+        Args: 
+            x : float
+                new x position
+            y : float
+                new y position
+
+        Returns: 
+            None
+        """
+
+        self.sprite_index = 0
+        self.image = self.images_right[self.sprite_index]
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
+        self.walk_counter = 0
+        self.in_air = True
+        self.jump_vel_y = 0
+        self.jumped = False
+        self.direction = 1
+        self.walk_cooldown = 5
+        self.col_thresh = 20
 
     def update(self, game_over, score, game_completed, sounds):
         """
@@ -152,11 +164,12 @@ class Player():
 
         Returns: 
             new conditions of game_over and score
-        """    
-        dx, dy = 0 ,0
+        """
+
+        dx, dy = 0, 0
 
         if not game_over and not game_completed:
-            #get keypresses
+            # get keypresses
             key = pygame.key.get_pressed()
             if key[pygame.K_SPACE] and not self.jumped and not self.in_air:
                 sounds['jump'].play()
@@ -180,8 +193,7 @@ class Player():
                 if self.direction == -1:
                     self.image = self.images_left[self.sprite_index]
 
-
-            #handle animation
+            # handle animation
             if self.walk_counter > self.walk_cooldown:
                 self.walk_counter = 0
                 self.sprite_index += 1
@@ -192,64 +204,64 @@ class Player():
                 if self.direction == -1:
                     self.image = self.images_left[self.sprite_index]
 
-            #add gravity
+            # add gravity
             self.jump_vel_y += 1
             if self.jump_vel_y > 10:
                 self.jump_vel_y = 10
             dy += self.jump_vel_y
 
             self.in_air = True
-            #checking collisions with ground
+            # checking collisions with ground
             for tile in self.world.tile_list:
-                #check for collision in y direction
+                # check for collision in y direction
                 if tile[1].colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
-                    #check if below the ground (collision with head) i.e jumping
+                    # check if below the ground (collision with head) i.e jumping
                     if self.jump_vel_y < 0:
                         dy = tile[1].bottom - self.rect.top
                         self.jump_vel_y = 0
-                    #check if falling on ground
+                    # check if falling on ground
                     elif self.jump_vel_y >= 0:
                         dy = tile[1].top - self.rect.bottom
                         self.jump_vel_y = 0
                         self.in_air = False
-                #check for collision in x direction
+                # check for collision in x direction
                 if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
                     dx = 0
-            #checking collisions with platforms
+            # checking collisions with platforms
             for platform in self.platform_group:
-                #collision in the x direction
+                # collision in the x direction
                 if platform.rect.colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
                     dx = 0
-                #collision in the y direction
+                # collision in the y direction
                 if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
 
                     if abs((self.rect.top + dy) - platform.rect.bottom) < self.col_thresh:
                         self.vel_y = 0
                         dy = platform.rect.bottom - self.rect.top
-                    #falling collision
+                    # falling collision
                     elif abs((self.rect.bottom + dy) - platform.rect.top) < self.col_thresh:
                         self.rect.bottom = platform.rect.top - 1
                         self.in_air = False
                         dy = 0
-                    #move sideqays with the platform
+                    # move sideqays with the platform
                     if platform.move_x != 0:
                         self.rect.x += platform.move_direction
 
-            #check for collision with enemies
+            # check for collision with enemies
             if pygame.sprite.spritecollide(self, self.blob_group, False):
                 game_over = True
                 sounds['game_over'].play()
             if pygame.sprite.spritecollide(self, self.lava_group, False):
                 game_over = True
                 sounds['game_over'].play()
-            #check for collision with exit
+            # check for collision with exit
             if pygame.sprite.spritecollide(self, self.exit_group, False):
                 self.world.level_completed = True
-            #check for collision with coin
+            # check for collision with coin
             if pygame.sprite.spritecollide(self, self.coin_group, True):
                 score += 1
-                sounds['coin'].play()            
-            #update player's coordinates
+                sounds['coin'].play()
+                # update player's coordinates
             self.rect.x += dx
             self.rect.y += dy
 
@@ -261,7 +273,7 @@ class Player():
             if self.rect.y > 200:
                 self.rect.y -= 5
 
-        #draw player onto screen
+        # draw player onto screen
         screen.blit(self.image, self.rect)
 
         return game_over, score
@@ -271,14 +283,13 @@ class Enemy(pygame.sprite.Sprite):
     """
     A class used to represent the blob
 
-    ...
-
     Attributes:
         x : float
             x coordinate
         y : float
             y coordinate
     """
+
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('img/blob.png').convert_alpha()
@@ -287,11 +298,12 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.y = y
         self.move_direction = 1
         self.move_counter = 0
-    
+
     def update(self):
         """
         Allows the enemy to move left and right
-        """   
+        """
+
         self.rect.x += self.move_direction
         self.move_counter += 1
         if abs(self.move_counter) > 50:
@@ -303,7 +315,6 @@ class Lava(pygame.sprite.Sprite):
     """
     A class used to represent the lava
     the built-in update method is used
-    ...
 
     Attributes:
         x : float
@@ -311,19 +322,20 @@ class Lava(pygame.sprite.Sprite):
         y : float
             y coordinate
     """
+
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/lava.png').convert_alpha()
-        self.image = pygame.transform.scale(img, (tile_size, tile_size//2))
+        self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
 
 class Coin(pygame.sprite.Sprite):
     """
     A class used to represent coins
     the built-in update method is used
-    ...
 
     Attributes:
         x : float
@@ -331,6 +343,7 @@ class Coin(pygame.sprite.Sprite):
         y : float
             y coordinate
     """
+
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/coin.png').convert_alpha()
@@ -338,11 +351,11 @@ class Coin(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
+
 class Platform(pygame.sprite.Sprite):
     """
     A class used to represent moving platforms
     the built-in update method is used
-    ...
 
     Attributes:
         x : float
@@ -354,10 +367,11 @@ class Platform(pygame.sprite.Sprite):
         move_y : float
             speed on the y-axis
     """
+
     def __init__(self, x, y, move_x, move_y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/platform.png').convert_alpha()
-        self.image = pygame.transform.scale(img, (tile_size, tile_size//2))
+        self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -367,18 +381,18 @@ class Platform(pygame.sprite.Sprite):
         self.move_direction = 1
 
     def update(self):
-        self.rect.x += self.move_direction*self.move_x
-        self.rect.y += self.move_direction*self.move_y
+        self.rect.x += self.move_direction * self.move_x
+        self.rect.y += self.move_direction * self.move_y
         self.move_counter += 1
         if abs(self.move_counter) > 50:
             self.move_direction *= -1
-            self.move_counter *= -1    
+            self.move_counter *= -1
+
 
 class Exit(pygame.sprite.Sprite):
     """
     A class used to represent exit doors
     the built-in update method is used
-    ...
 
     Attributes:
         x : float
@@ -386,6 +400,7 @@ class Exit(pygame.sprite.Sprite):
         y : float
             y coordinate
     """
+
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         img = pygame.image.load('img/exit.png').convert_alpha()
@@ -398,8 +413,6 @@ class Exit(pygame.sprite.Sprite):
 class World():
     """
     A class used to represent the world
-
-    ...
 
     Attributes:
         data : two-dimensional array
@@ -417,6 +430,7 @@ class World():
         platform_group : pygame.sprite.Group()
 
     """
+
     def __init__(self, data, blob_group, lava_group, exit_group, coin_group, platform_group):
         self.tile_list = []
         self.data = data
@@ -431,53 +445,55 @@ class World():
 
     def draw(self):
         """
-        fill the world with elementary blocks
+        Fill the world with elementary blocks
         """
+
         for tile in self.tile_list:
             screen.blit(tile[0], tile[1])
 
     def make_world(self):
         """
-        parsing a two-dimensional array and filling in sprite groups
+        Parsing a two-dimensional array and filling in sprite groups
         """
+
         try:
             dirt_img = pygame.image.load('img/dirt.png').convert_alpha()
             grass_img = pygame.image.load('img/grass.png').convert_alpha()
         except pygame.error as err:
             raise SystemExit(err)
 
-        #fill background with data
+        # fill background with data
         for row_count, row in enumerate(self.data):
             for tile_count, tile in enumerate(row):
                 if tile == 1:
                     img = pygame.transform.scale(dirt_img, (tile_size, tile_size))
                     img_rect = img.get_rect()
-                    img_rect.x = tile_count*tile_size
-                    img_rect.y = row_count*tile_size
+                    img_rect.x = tile_count * tile_size
+                    img_rect.y = row_count * tile_size
                     self.tile_list.append((img, img_rect))
                 elif tile == 2:
                     img = pygame.transform.scale(grass_img, (tile_size, tile_size))
                     img_rect = img.get_rect()
-                    img_rect.x = tile_count*tile_size
-                    img_rect.y = row_count*tile_size
+                    img_rect.x = tile_count * tile_size
+                    img_rect.y = row_count * tile_size
                     self.tile_list.append((img, img_rect))
                 elif tile == 3:
-                    blob = Enemy(tile_count*tile_size, row_count*tile_size + 15)
+                    blob = Enemy(tile_count * tile_size, row_count * tile_size + 15)
                     self.blob_group.add(blob)
                 elif tile == 4:
-                    platform = Platform(tile_count*tile_size, row_count*tile_size, 1, 0)
+                    platform = Platform(tile_count * tile_size, row_count * tile_size, 1, 0)
                     self.platform_group.add(platform)
                 elif tile == 5:
-                    platform = Platform(tile_count*tile_size, row_count*tile_size, 0, 1)
-                    self.platform_group.add(platform)                    
+                    platform = Platform(tile_count * tile_size, row_count * tile_size, 0, 1)
+                    self.platform_group.add(platform)
                 elif tile == 6:
-                    lava = Lava(tile_count*tile_size, row_count*tile_size + (tile_size // 2))
+                    lava = Lava(tile_count * tile_size, row_count * tile_size + (tile_size // 2))
                     self.lava_group.add(lava)
                 elif tile == 7:
-                    coin = Coin(tile_count*tile_size + (tile_size // 2), row_count*tile_size + (tile_size // 2))
-                    self.coin_group.add(coin)                   
+                    coin = Coin(tile_count * tile_size + (tile_size // 2), row_count * tile_size + (tile_size // 2))
+                    self.coin_group.add(coin)
                 elif tile == 8:
-                    level_exit = Exit(tile_count*tile_size, row_count*tile_size - (tile_size // 2))
+                    level_exit = Exit(tile_count * tile_size, row_count * tile_size - (tile_size // 2))
                     self.exit_group.add(level_exit)
 
 
@@ -485,13 +501,12 @@ class Background():
     """
     A class used to represent the world
 
-    ...
-
     Attributes:
         *args :  *(name strings of pictures(str), (xcoord(int), ycoord(int)))
             arguments are served in the order they are added to the background screen
 
-    """    
+    """
+
     def __init__(self, *args):
         self.background_pics = []
         try:
@@ -499,10 +514,12 @@ class Background():
                 img = pygame.image.load(picture).convert_alpha()
                 self.background_pics.append((img, coordinates))
         except pygame.error as err:
-	        raise SystemExit(err)
+            raise SystemExit(err)
+
     def draw(self):
         """
-        draws background images
+        Draws background images
         """
+
         for picture, coordinates in self.background_pics:
             screen.blit(picture, coordinates)

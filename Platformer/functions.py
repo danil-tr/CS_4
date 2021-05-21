@@ -9,6 +9,7 @@ from os import path
 from world import *
 from constants import *
 
+
 def draw_text(text, font, text_col, x, y):
     """
     Draws text to the screen when the function is called
@@ -31,6 +32,7 @@ def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
+
 def load_world(level):
     """
     Pulls data from a level data file and returns it as a two-dimensional array
@@ -40,7 +42,7 @@ def load_world(level):
 
     Returns:
         two-dimensional array with representation of the world
-    """    
+    """
     data_path = path.join('levels', f'level{level}_data')
 
     if path.exists(data_path):
@@ -49,7 +51,8 @@ def load_world(level):
 
     return world_data
 
-#function to reset level
+
+# function to reset level
 def reset_level(level, player, blob_group, lava_group, exit_group, coin_group, score_coin, platform_group):
     """
     Reloads the level when the player is defeated
@@ -75,7 +78,7 @@ def reset_level(level, player, blob_group, lava_group, exit_group, coin_group, s
 
     Returns:
         world (World): instance of the class World with reseted level
-    """        
+    """
     player.reset(100, screen_height - 130)
 
     platform_group.empty()
