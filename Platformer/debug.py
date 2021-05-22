@@ -1,6 +1,7 @@
 """
 The debug module: contains functions for game development
 """
+
 import pygame
 from constants import *
 

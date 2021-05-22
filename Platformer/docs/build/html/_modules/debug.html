@@ -34,6 +34,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The debug module: contains functions for game development</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">pygame</span>
 <span class="kn">from</span> <span class="nn">constants</span> <span class="k">import</span> <span class="o">*</span>
 
@@ -50,6 +51,9 @@
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grids_number</span><span class="p">):</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">line</span> <span class="o">*</span> <span class="n">tile_size</span><span class="p">),</span> <span class="p">(</span><span class="n">screen_width</span><span class="p">,</span> <span class="n">line</span> <span class="o">*</span> <span class="n">tile_size</span><span class="p">))</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="p">(</span><span class="n">line</span> <span class="o">*</span> <span class="n">tile_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">line</span> <span class="o">*</span> <span class="n">tile_size</span><span class="p">,</span> <span class="n">screen_height</span><span class="p">))</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
 </pre></div>
 
           </div>
@@ -104,7 +108,7 @@
       &copy;2021, Danil Trifonov, Irina SHirokova.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

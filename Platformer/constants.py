@@ -17,7 +17,6 @@ Options:
     max_levels(int) - number of levels to complete the game
 
     sound_volume(float) - soun volume from 0 to 1
-
 """
 
 import pygame
