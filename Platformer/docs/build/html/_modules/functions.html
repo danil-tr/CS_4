@@ -1,23 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>functions &#8212; Platformer 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -27,6 +26,8 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <h1>Source code for functions</h1><div class="highlight"><pre>
@@ -40,6 +41,7 @@
 <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">world</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">constants</span> <span class="k">import</span> <span class="o">*</span>
+
 
 <div class="viewcode-block" id="draw_text"><a class="viewcode-back" href="../index.html#functions.draw_text">[docs]</a><span class="k">def</span> <span class="nf">draw_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text_col</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -63,6 +65,7 @@
     <span class="n">img</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">text_col</span><span class="p">)</span>
     <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span></div>
 
+
 <div class="viewcode-block" id="load_world"><a class="viewcode-back" href="../index.html#functions.load_world">[docs]</a><span class="k">def</span> <span class="nf">load_world</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pulls data from a level data file and returns it as a two-dimensional array</span>
@@ -72,7 +75,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        two-dimensional array with representation of the world</span>
-<span class="sd">    &quot;&quot;&quot;</span>    
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;levels&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;level</span><span class="si">{level}</span><span class="s1">_data&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
@@ -81,7 +84,8 @@
 
     <span class="k">return</span> <span class="n">world_data</span></div>
 
-<span class="c1">#function to reset level</span>
+
+<span class="c1"># function to reset level</span>
 <div class="viewcode-block" id="reset_level"><a class="viewcode-back" href="../index.html#functions.reset_level">[docs]</a><span class="k">def</span> <span class="nf">reset_level</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">blob_group</span><span class="p">,</span> <span class="n">lava_group</span><span class="p">,</span> <span class="n">exit_group</span><span class="p">,</span> <span class="n">coin_group</span><span class="p">,</span> <span class="n">score_coin</span><span class="p">,</span> <span class="n">platform_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reloads the level when the player is defeated</span>
@@ -107,8 +111,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        world (World): instance of the class World with reseted level</span>
-<span class="sd">    &quot;&quot;&quot;</span>        
-    <span class="n">player</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">130</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">tile_size</span><span class="p">,</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="mf">2.6</span><span class="o">*</span><span class="n">tile_size</span><span class="p">)</span>
 
     <span class="n">platform_group</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
     <span class="n">blob_group</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
@@ -124,6 +128,7 @@
 </pre></div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -149,17 +154,23 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -168,8 +179,8 @@
       &copy;2021, Danil Trifonov, Irina SHirokova.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
 
