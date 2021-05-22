@@ -32,6 +32,7 @@ class Button:
         """
         draws the button image to the screen and tracks the mouse click on each frame
         """
+        
         action = False
         # get mouse position
         pos = pygame.mouse.get_pos()
