@@ -18,7 +18,7 @@ __SPACEBAR__ – прыжок.
 
 ## Для запуска игры необходимо:
 
-- [![]( https://files.realpython.com/media/pygame-logo.e78e57db3000.png =120x)](https://pypi.org/project/pygame/)  версии ```2.0.0``` и старше.
+- [![]( https://files.realpython.com/media/pygame-logo.e78e57db3000.png)](https://pypi.org/project/pygame/)  версии ```2.0.0``` и старше.
 - [![]( https://img.shields.io/badge/python-3-blue.svg?v=1)](https://www.python.org/downloads/)
 
 ## Как запустить игру:
