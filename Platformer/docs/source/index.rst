@@ -10,14 +10,29 @@ Welcome to Platformer's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-Platformer main
-===============
+Platformer main script
+======================
 .. automodule:: platformer
    :members:
 
 Platformer world
 ================
 .. automodule:: world
+   :members:
+
+Platformer enemies
+==================
+.. automodule:: enemies
+   :members:
+   
+Platformer player
+=================
+.. automodule:: player
+   :members:
+   
+Platformer world environment
+============================
+.. automodule:: world_environment
    :members:
    
 Platformer constants

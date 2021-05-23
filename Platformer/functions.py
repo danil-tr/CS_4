@@ -3,10 +3,9 @@ The function module: contains the necessary functions for working with
 the World class and displaying text on the screen
 """
 
-import pygame
 import json
 from os import path
-from world import *
+from world import World
 from constants import *
 
 

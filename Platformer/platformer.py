@@ -1,16 +1,18 @@
 """
 The platformer module: contains the initialization of the main game objects and the game loop.
 
-Run this script to start the game!
+Run platformer.py script to start the game!
 """
 
+"""
 import pygame
 from pygame import mixer
 from pygame.locals import *
 from world import *
 from constants import *
-from functions import *
-from debug import draw_grid
+from functions import draw_text, reset_level, load_world
+from world_environment import Button, Background
+from player import Player
 
 
 pygame.mixer.pre_init(48000, -16, 1, 1024)
@@ -111,3 +113,4 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+"""

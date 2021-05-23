@@ -37,229 +37,13 @@
 </div>
 </section>
 <section id="module-platformer">
-<span id="platformer-main"></span><h1>Platformer main<a class="headerlink" href="#module-platformer" title="Permalink to this headline">¶</a></h1>
+<span id="platformer-main-script"></span><h1>Platformer main script<a class="headerlink" href="#module-platformer" title="Permalink to this headline">¶</a></h1>
 <p>The platformer module: contains the initialization of the main game objects and the game loop.</p>
-<p>Run this script to start the game!</p>
+<p>Run platformer.py script to start the game!</p>
 </section>
 <section id="module-world">
 <span id="platformer-world"></span><h1>Platformer world<a class="headerlink" href="#module-world" title="Permalink to this headline">¶</a></h1>
-<p>The world module: contains game classes</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Background">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Background" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent the world</p>
-<dl>
-<dt>Attributes:</dt><dd><dl>
-<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>args<span class="classifier"><a href="#id3"><span class="problematic" id="id4">*</span></a>(name strings of pictures(str), (xcoord(int), ycoord(int)))</span></dt><dd><p>arguments are served in the order they are added to the background screen</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Background.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Background.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Background.draw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws background images</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Button">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Button" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent buttons</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-<dt>image_name<span class="classifier">str</span></dt><dd><p>the name of the image that represents the button</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Button.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Button.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Button.draw" title="Permalink to this definition">¶</a></dt>
-<dd><p>draws the button image to the screen and tracks the mouse click on each frame</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Coin">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Coin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Coin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Coin" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent coins
-the built-in update method is used</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Enemy">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Enemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Enemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Enemy" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent the blob</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Enemy.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Enemy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Enemy.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Allows the enemy to move left and right</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Exit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Exit" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent exit doors
-the built-in update method is used</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Lava">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Lava</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Lava"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Lava" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent the lava
-the built-in update method is used</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Platform">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Platform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Platform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Platform" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent moving platforms
-the built-in update method is used</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-<dt>move_x<span class="classifier">float</span></dt><dd><p>speed on the x-axis</p>
-</dd>
-<dt>move_y<span class="classifier">float</span></dt><dd><p>speed on the y-axis</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Platform.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Platform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Platform.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>method to control sprite behavior</p>
-<p>Sprite.update(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs):</p>
-<p>The default implementation of this method does nothing; it’s just a
-convenient “hook” that you can override. This method is called by
-Group.update() with whatever arguments you give it.</p>
-<p>There is no need to use this method if not using the convenience
-method by the same name in the Group class.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="world.Player">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">Player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blob_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exit_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coin_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform_group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Player" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class used to represent the player</p>
-<dl>
-<dt>Attributes:</dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
-</dd>
-<dt>world<span class="classifier">class World</span></dt><dd><p>the world in which you want to draw the player</p>
-</dd>
-</dl>
-<p>blob_group : pygame.sprite.Group()</p>
-<p>lava_group : pygame.sprite.Group()</p>
-<p>exit_group : pygame.sprite.Group()</p>
-<p>coin_group : pygame.sprite.Group()</p>
-<p>platform_group : pygame.sprite.Group()</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Player.change_world">
-<span class="sig-name descname"><span class="pre">change_world</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_world</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Player.change_world"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Player.change_world" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change world for player</p>
-<dl class="simple">
-<dt>Args: </dt><dd><p>new_world(two-dimensional array)</p>
-</dd>
-<dt>Returns: </dt><dd><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Player.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Player.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Player.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset player’s condition
-Moves the player’s sprite to the starting position and resets the effects</p>
-<dl class="simple">
-<dt>Args: </dt><dd><dl class="simple">
-<dt>x<span class="classifier">float</span></dt><dd><p>new x position</p>
-</dd>
-<dt>y<span class="classifier">float</span></dt><dd><p>new y position</p>
-</dd>
-</dl>
-</dd>
-<dt>Returns: </dt><dd><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="world.Player.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_over</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_completed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sounds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#Player.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.Player.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates the state on each frame of the player: tracks movement and collision with objects</p>
-<dl class="simple">
-<dt>Args: </dt><dd><dl class="simple">
-<dt>game_over<span class="classifier">bool</span></dt><dd><p>flag for determining the progress status of the game</p>
-</dd>
-<dt>score<span class="classifier">int</span></dt><dd><p>Uses the current score counter</p>
-</dd>
-<dt>game_complited<span class="classifier">bool</span></dt><dd><p>flag for determining the victory in the game</p>
-</dd>
-<dt>sounds<span class="classifier">dict[str, fx]</span></dt><dd><p>dictionary with sounds for different situations</p>
-</dd>
-</dl>
-</dd>
-<dt>Returns: </dt><dd><p>new conditions of game_over and score</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<p>The world module: contains World class, which is responsible for displaying game objects on the screen.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="world.World">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world.</span></span><span class="sig-name descname"><span class="pre">World</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blob_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exit_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coin_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform_group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#World"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.World" title="Permalink to this definition">¶</a></dt>
@@ -288,6 +72,234 @@ Moves the player’s sprite to the starting position and resets the effects</p>
 <dt class="sig sig-object py" id="world.World.make_world">
 <span class="sig-name descname"><span class="pre">make_world</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world.html#World.make_world"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world.World.make_world" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parsing a two-dimensional array and filling in sprite groups</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-enemies">
+<span id="platformer-enemies"></span><h1>Platformer enemies<a class="headerlink" href="#module-enemies" title="Permalink to this headline">¶</a></h1>
+<p>The enemies module: contains objects that the game reloads when interacting with.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="enemies.Enemy">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">enemies.</span></span><span class="sig-name descname"><span class="pre">Enemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/enemies.html#Enemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#enemies.Enemy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent the blob</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="enemies.Enemy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/enemies.html#Enemy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#enemies.Enemy.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the enemy to move left and right</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="enemies.Lava">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">enemies.</span></span><span class="sig-name descname"><span class="pre">Lava</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/enemies.html#Lava"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#enemies.Lava" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent the lava
+the built-in update method is used</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-player">
+<span id="platformer-player"></span><h1>Platformer player<a class="headerlink" href="#module-player" title="Permalink to this headline">¶</a></h1>
+<p>The player module: contains the main event handling from the user’s keyboard.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="player.Player">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">player.</span></span><span class="sig-name descname"><span class="pre">Player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blob_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exit_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coin_group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform_group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent the player</p>
+<dl>
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+<dt>world<span class="classifier">class World</span></dt><dd><p>the world in which you want to draw the player</p>
+</dd>
+</dl>
+<p>blob_group : pygame.sprite.Group()</p>
+<p>lava_group : pygame.sprite.Group()</p>
+<p>exit_group : pygame.sprite.Group()</p>
+<p>coin_group : pygame.sprite.Group()</p>
+<p>platform_group : pygame.sprite.Group()</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="player.Player.change_world">
+<span class="sig-name descname"><span class="pre">change_world</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_world</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.change_world"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.change_world" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change world for player</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>new_world(two-dimensional array)</p>
+</dd>
+<dt>Returns: </dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="player.Player.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset player’s condition
+Moves the player’s sprite to the starting position and resets the effects</p>
+<dl class="simple">
+<dt>Args: </dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>new x position</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>new y position</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns: </dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="player.Player.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_over</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_completed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sounds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state on each frame of the player: tracks movement and collision with objects</p>
+<dl class="simple">
+<dt>Args: </dt><dd><dl class="simple">
+<dt>game_over<span class="classifier">bool</span></dt><dd><p>flag for determining the progress status of the game</p>
+</dd>
+<dt>score<span class="classifier">int</span></dt><dd><p>Uses the current score counter</p>
+</dd>
+<dt>game_complited<span class="classifier">bool</span></dt><dd><p>flag for determining the victory in the game</p>
+</dd>
+<dt>sounds<span class="classifier">dict[str, fx]</span></dt><dd><p>dictionary with sounds for different situations</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns: </dt><dd><p>new conditions of game_over and score</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-world_environment">
+<span id="platformer-world-environment"></span><h1>Platformer world environment<a class="headerlink" href="#module-world_environment" title="Permalink to this headline">¶</a></h1>
+<p>The world_environment module: contains static game objects that the player can interact with.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="world_environment.Background">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world_environment.</span></span><span class="sig-name descname"><span class="pre">Background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Background" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent the world</p>
+<dl>
+<dt>Attributes:</dt><dd><dl>
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>args<span class="classifier"><a href="#id3"><span class="problematic" id="id4">*</span></a>(name strings of pictures(str), (xcoord(int), ycoord(int)))</span></dt><dd><p>arguments are served in the order they are added to the background screen</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="world_environment.Background.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Background.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Background.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws background images</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="world_environment.Button">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world_environment.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent buttons</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+<dt>image_name<span class="classifier">str</span></dt><dd><p>the name of the image that represents the button</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="world_environment.Button.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Button.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Button.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>draws the button image to the screen and tracks the mouse click on each frame</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="world_environment.Coin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world_environment.</span></span><span class="sig-name descname"><span class="pre">Coin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Coin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Coin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent coins
+the built-in update method is used</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="world_environment.Exit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world_environment.</span></span><span class="sig-name descname"><span class="pre">Exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent exit doors
+the built-in update method is used</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="world_environment.Platform">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">world_environment.</span></span><span class="sig-name descname"><span class="pre">Platform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Platform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Platform" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent moving platforms
+the built-in update method is used</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">float</span></dt><dd><p>x coordinate</p>
+</dd>
+<dt>y<span class="classifier">float</span></dt><dd><p>y coordinate</p>
+</dd>
+<dt>move_x<span class="classifier">float</span></dt><dd><p>speed on the x-axis</p>
+</dd>
+<dt>move_y<span class="classifier">float</span></dt><dd><p>speed on the y-axis</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="world_environment.Platform.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/world_environment.html#Platform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#world_environment.Platform.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>method to control sprite behavior</p>
+<p>Sprite.update(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs):</p>
+<p>The default implementation of this method does nothing; it’s just a
+convenient “hook” that you can override. This method is called by
+Group.update() with whatever arguments you give it.</p>
+<p>There is no need to use this method if not using the convenience
+method by the same name in the Group class.</p>
 </dd></dl>
 
 </dd></dl>
