@@ -4,7 +4,6 @@ The platformer module: contains the initialization of the main game objects and 
 Run platformer.py script to start the game!
 """
 
-"""
 import pygame
 from pygame import mixer
 from pygame.locals import *
@@ -113,4 +112,3 @@ while run:
     pygame.display.update()
 
 pygame.quit()
-"""
