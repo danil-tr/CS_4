@@ -33,4 +33,4 @@ __SPACEBAR__ – прыжок.
 
 Для просмотра документации необходимо скачать папку docs и запустить
 */Platformer/docs/build/html/index.html* в браузере.
-Детальная связь между классами лежит [здесь](Platformer|docs|ClassDiagram.png).
+Детальная связь между классами лежит [здесь](Platformer/docs/ClassDiagram.png).
