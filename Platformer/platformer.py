@@ -1,11 +1,10 @@
 """
 The platformer module: contains the initialization of the main game objects and the game loop.
 
-Run this script to start the game.
+Run this script to start the game!
 """
 
 import pygame
-import pickle
 from pygame import mixer
 from pygame.locals import *
 from world import *
@@ -50,7 +49,7 @@ exit_group = pygame.sprite.Group()
 coin_group = pygame.sprite.Group()
 coin_group.add(score_coin)
 
-world = World(load_world(level), blob_group, lava_group, exit_group, coin_group, platform_group)
+world = World(load_world(level, stage), blob_group, lava_group, exit_group, coin_group, platform_group)
 player = Player(2*tile_size, screen_height - 2.6*tile_size, world, blob_group, lava_group, exit_group, coin_group, platform_group)
 background = Background(('img/sky.png', (0, 0)), ('img/sun.png', (100, 100)))
 

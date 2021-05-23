@@ -10,6 +10,10 @@ Welcome to Platformer's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+Platformer main
+===============
+.. automodule:: platformer
+   :members:
 
 Platformer world
 ================
@@ -31,10 +35,6 @@ Platformer debug options
 .. automodule:: debug
    :members:
 
-Platformer main
-===============
-.. automodule:: platformer
-   :members:
 
 Indices and tables
 ==================

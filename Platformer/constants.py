@@ -42,6 +42,7 @@ white = (255, 255, 255)
 blue = (0, 0, 255)
 
 # define game variables
+stage = 1
 tile_size = 50
 level = 1
 max_levels = 7
