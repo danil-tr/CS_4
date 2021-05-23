@@ -1,5 +1,6 @@
 """
 The platformer module: contains the initialization of the main game objects and the game loop.
+
 Run this script to start the game.
 """
 
